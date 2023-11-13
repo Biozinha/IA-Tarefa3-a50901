@@ -22,7 +22,7 @@ public class FollowWp1 : MonoBehaviour
         g = wpManager.GetComponent<WPManager>().graph;
         currentNode = wps[0];
 
-        Invoke("GoToRuin", 2);
+        //Invoke("GoToRuin", 2);
     }
 
     public void GoToHeli()
@@ -37,6 +37,12 @@ public class FollowWp1 : MonoBehaviour
         currentWP = 0;
     }
 
+    public void GoToFactory()
+    {
+        g.AStart(currentNode, wps[5]);
+        currentWP = 0;
+    }
+
     // Update is called once per frame
     void LateUpdate()
     {
@@ -45,7 +51,7 @@ public class FollowWp1 : MonoBehaviour
 
         if (Vector3.Distance(g.pathList[currentWP].getId().transform.position, this.transform.position) < accuracy)
         {
-            currentNode = g.pathList[currentWP].getId;
+            currentNode = g.pathList[currentWP].getId();
             currentWP++;
         }
 
